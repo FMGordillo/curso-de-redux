@@ -5,8 +5,3 @@ export const Main = styled.main`
   margin: 64px;
   font-family: sans-serif;
 `;
-
-export const Table = styled.table`
-  
-`;
-

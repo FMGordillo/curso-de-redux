@@ -1,1 +1,2 @@
-export * from "./App";
+export * from "./TableRow";
+export * from "./TableHeader";
