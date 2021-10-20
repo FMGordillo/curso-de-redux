@@ -1,26 +1,27 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Row, TableHeader } from "../components";
+
+import { FETCH_USERS } from "../App/actions"
 
 export const Table = styled.table``;
 
 const UsersPage = () => {
-  const [users, setUsers] = useState([]);
+  const users = useSelector(({ users }) => users);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fn = async () => {
-      const data = await fetch("https://jsonplaceholder.typicode.com/users");
-      const json = await data.json();
-      setUsers(json);
-    };
-    fn();
-  }, []);
+    dispatch({ type: FETCH_USERS });
+  }, [dispatch]);
 
   return (
     <Table>
       <TableHeader data={["Nombre", "Correo", "Nombre de usuario"]} />
       <tbody>
-        {users.length > 0 && users.map((d) => <Row key={d.id} data={d} />)}
+        {(users?.length ? users : []).map((d) => (
+          <Row key={d.id} data={d} />
+        ))}
       </tbody>
     </Table>
   );
