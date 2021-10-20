@@ -1,15 +1,15 @@
-import { FETCH_USERS, GET_USERS } from "../actions";
+import * as status from "../actions/status";
+import { FETCH_USERS } from "../actions";
 
 const INITIAL_STATE = {
   data: [],
+  status: status.IDLE_STATUS,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_USERS:
-      return state.data;
     case FETCH_USERS:
-     return { ...state, data: action.payload }
+      return { ...state, ...action.payload };
     default:
       return state;
   }
