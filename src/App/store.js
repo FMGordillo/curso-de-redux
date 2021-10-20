@@ -3,9 +3,11 @@ import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducers from "./reducers";
 import { userReducerInitialState } from "./reducers/userReducer";
+import { postReducerInitialState } from "./reducers/postReducer";
 
 const initialState = {
-  users: userReducerInitialState
+  users: userReducerInitialState,
+  posts: postReducerInitialState,
 };
 
 const store = createStore(

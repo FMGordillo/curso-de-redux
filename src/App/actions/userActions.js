@@ -24,6 +24,7 @@ export const fetchUser = (id) => async (dispatch) => {
       error: false,
     });
   } catch (error) {
+    console.info("Error while fetching user", error);
     dispatch({
       type: FETCH_USER,
       payload: { selectedUser: error, status: status.SUCCESS_STATUS },
@@ -51,6 +52,7 @@ export const fetchUsers = () => async (dispatch) => {
       error: false,
     });
   } catch (error) {
+    console.info("Error while fetching users", error);
     dispatch({
       type: FETCH_USERS,
       payload: { data: error, status: status.FAILURE_STATUS },
