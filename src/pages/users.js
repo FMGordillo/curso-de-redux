@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Row, TableHeader } from "../components";
 
-import { FETCH_USERS } from "../App/actions"
+import { fetchUsers } from "../App/actions";
 
 export const Table = styled.table``;
 
 const UsersPage = () => {
-  const users = useSelector(({ users }) => users);
+  const users = useSelector(({ users }) => users.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: FETCH_USERS });
+    dispatch(fetchUsers());
   }, [dispatch]);
-
+  
   return (
     <Table>
       <TableHeader data={["Nombre", "Correo", "Nombre de usuario"]} />

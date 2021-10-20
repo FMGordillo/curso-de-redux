@@ -1,21 +1,15 @@
 import { FETCH_USERS, GET_USERS } from "../actions";
 
 const INITIAL_STATE = {
-  users: [],
+  data: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case GET_USERS:
-      return { ...state, users: action.payload };
+      return state.data;
     case FETCH_USERS:
-      return fetch("https://jsonplaceholder.typicode.com/users")
-        .then((body) => body.json())
-        .then((data) => data)
-        .catch((err) => {
-          console.log("Error while fetching users", err);
-          return [];
-        });
+     return { ...state, data: action.payload }
     default:
       return state;
   }

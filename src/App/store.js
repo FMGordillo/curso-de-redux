@@ -1,14 +1,16 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import reduxThunk from "redux-thunk";
+import { composeWithDevTools } from 'redux-devtools-extension'
 import reducers from "./reducers";
 
 const initialState = {
   users: [],
-}
+};
 
 const store = createStore(
   reducers,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(reduxThunk))
 );
 
 export default store;
