@@ -1,14 +1,17 @@
 import * as status from "../actions/status";
-import { FETCH_USERS } from "../actions";
+import { FETCH_USER, FETCH_USERS } from "../actions";
 
-const INITIAL_STATE = {
+export const userReducerInitialState = {
   data: [],
+  selectedUser: {},
   status: status.IDLE_STATUS,
   error: false,
 };
 
-const reducer = (state = INITIAL_STATE, action) => {
+const reducer = (state = userReducerInitialState, action) => {
   switch (action.type) {
+    case FETCH_USER:
+      return { ...state, ...action.payload };
     case FETCH_USERS:
       return { ...state, ...action.payload };
     default:

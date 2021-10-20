@@ -1,5 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { fetchUser } from "../App/actions/userActions";
+import { UserContainer } from "../containers";
+
 const UserPage = () => {
-  return <p>An user, lol</p>;
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const { selectedUser, loading, error } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    dispatch(fetchUser(id));
+  }, [dispatch, id])
+
+  return <UserContainer data={selectedUser} loaing={loading} error={error} />;
 };
 
 export { UserPage };
