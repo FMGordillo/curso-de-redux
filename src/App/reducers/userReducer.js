@@ -4,6 +4,7 @@ import { FETCH_USERS } from "../actions";
 const INITIAL_STATE = {
   data: [],
   status: status.IDLE_STATUS,
+  error: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {

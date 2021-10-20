@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Row, TableHeader } from "../components";
+
+import * as status from "../App/actions/status";
+import { Loading, Row, TableHeader } from "../components";
 
 import { fetchUsers } from "../App/actions";
 
 export const Table = styled.table``;
 
 const UsersPage = () => {
-  const users = useSelector(({ users }) => users.data, shallowEqual);
-  const fetchStatus = useSelector(({ users }) => users.status);
+  const {
+    data,
+    status: dataStatus,
+    error,
+  } = useSelector(({ users }) => users, shallowEqual);
 
   const dispatch = useDispatch();
 
@@ -19,15 +24,23 @@ const UsersPage = () => {
 
   return (
     <>
-      <p>Fetch status: {fetchStatus}</p>
-      <Table>
-        <TableHeader data={["Nombre", "Correo", "Nombre de usuario"]} />
-        <tbody>
-          {(users?.length ? users : []).map((d) => (
-            <Row key={d.id} data={d} />
-          ))}
-        </tbody>
-      </Table>
+      <p>Fetch status: {dataStatus}</p>
+      {dataStatus === status.LOADING_STATUS ? (
+        
+        <Loading style={{ justifySelf: "center"}} />
+      ) : (
+        <Table>
+          <TableHeader
+            loading={dataStatus === status.LOADING_STATUS}
+            data={["Nombre", "Correo", "Nombre de usuario"]}
+          />
+          <tbody>
+            {(data?.length && !error ? data : []).map((d) => (
+              <Row key={d.id} data={d} />
+            ))}
+          </tbody>
+        </Table>
+      )}
     </>
   );
 };

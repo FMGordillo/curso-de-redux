@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const THead = styled.thead`
   text-align: left;
 `;
 
-const TableHeader = ({ data }) => {
-  return (
+const TableHeader = ({ data, loading }) => {
+  return loading ? (
+    <div>Hola</div>
+  ) : (
     <THead>
       <tr>
         {data.map((h) => (
