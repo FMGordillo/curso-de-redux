@@ -17,6 +17,14 @@ function App() {
           <Route exact path="/" component={IndexPage} />
           <Route exact path="/users" component={UsersPage} />
         </Main>
+        <footer>
+          <p>
+            Loading icon from{" "}
+            <a href="https://loading.io" rel="noreferrer noopener">
+              loading.io
+            </a>
+          </p>
+        </footer>
       </BrowserRouter>
     </Provider>
   );
