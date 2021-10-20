@@ -1,5 +1,5 @@
 import { Menu } from "../components/Menu";
-import { Container, Main } from "./styles";
+import { MainContainer, Main } from "./styles";
 
 import { Route, BrowserRouter } from "react-router-dom";
 import { IndexPage } from "../pages";
@@ -13,7 +13,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Container>
+        <MainContainer>
           <header>
             <Menu />
           </header>
@@ -30,7 +30,7 @@ function App() {
               </a>
             </p>
           </footer>
-        </Container>
+        </MainContainer>
       </BrowserRouter>
     </Provider>
   );
