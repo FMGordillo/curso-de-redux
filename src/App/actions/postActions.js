@@ -2,7 +2,7 @@ export const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST";
 export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS";
 export const FETCH_POSTS_FAILURE = "FETCH_POSTS_FAILURE";
 
-export const actions = {
+export const POST_ACTIONS = {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE
@@ -25,7 +25,7 @@ export const fetchPosts = (userId) => async (dispatch) => {
     console.info("Error while fetching posts", error);
     dispatch({
       type: FETCH_POSTS_FAILURE,
-      payload: { posts: error },
+      payload: error
     });
   }
 };

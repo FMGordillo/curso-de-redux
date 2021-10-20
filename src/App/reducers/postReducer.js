@@ -1,4 +1,4 @@
-import { actions } from "../actions/postActions";
+import { POST_ACTIONS } from "../actions";
 import * as status from "../actions/status";
 
 export const postReducerInitialState = {
@@ -9,11 +9,12 @@ export const postReducerInitialState = {
 
 const reducer = (state = postReducerInitialState, action) => {
   switch (action.type) {
-    case actions.FETCH_POSTS_REQUEST:
+    case POST_ACTIONS.FETCH_POSTS_REQUEST:
       return { ...state, status: status.LOADING_STATUS };
-    case actions.FETCH_POSTS_SUCCESS:
+    case POST_ACTIONS.FETCH_POSTS_SUCCESS:
       return { ...state, posts: action.payload, status: status.SUCCESS_STATUS };
-    case actions.FETCH_POSTS_FAILURE:
+    case POST_ACTIONS.FETCH_POSTS_FAILURE:
+      // TODO: Donde pongo el `error`?
       return {
         ...state,
         posts: [],
