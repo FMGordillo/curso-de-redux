@@ -19,7 +19,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Li = styled.li`
+type LiProps = {
+  active: boolean;
+};
+
+const Li = styled.li<LiProps>`
   padding: 14px;
   border-bottom: ${({ active }) =>
     active ? "1px solid hsl(40deg, 80%, 70%)" : "none"};
