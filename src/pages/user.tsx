@@ -13,7 +13,9 @@ const UserPage = () => {
     selectedUser,
     status: userStatus,
     error,
+    // @ts-ignore
   } = useSelector((state) => state.users);
+  // @ts-ignore
   const { posts, status: postStatus } = useSelector((state) => state.posts);
 
   const isLoading =

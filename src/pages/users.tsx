@@ -6,6 +6,7 @@ import { fetchUsers } from "../App/actions";
 
 const UsersPage = () => {
   const { data, status, error } = useSelector(
+    // @ts-ignore
     ({ users }) => users,
     shallowEqual
   );
