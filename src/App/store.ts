@@ -1,7 +1,5 @@
-import { createStore, applyMiddleware } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import reduxThunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers";
 import { userReducerInitialState } from "./reducers/userReducer";
 import { postReducerInitialState } from "./reducers/postReducer";
