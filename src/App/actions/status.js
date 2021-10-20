@@ -1,6 +1,6 @@
-const IDLE_STATUS = "idle";
-const LOADING_STATUS = "loading";
-const SUCCESS_STATUS = "success";
-const FAILURE_STATUS = "failure";
+const IDLE = "idle";
+const LOADING = "loading";
+const SUCCESS = "success";
+const FAILURE = "failure";
 
-export { IDLE_STATUS, LOADING_STATUS, SUCCESS_STATUS, FAILURE_STATUS };
+export { IDLE, LOADING, SUCCESS, FAILURE };

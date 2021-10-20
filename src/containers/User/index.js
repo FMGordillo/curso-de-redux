@@ -1,9 +1,12 @@
+import { Post } from "./components";
+import { Loading } from "../../components";
 
-
-const UserContainer = ({ data, loading, error }) => {
-  return (
-    <p>{data.email}</p>
-  )
-}
+const UserContainer = ({ data, posts, loading, error }) => {
+  return loading ? (
+    <Loading />
+  ) : (
+    posts.map((post) => <Post key={post.id} data={post} />)
+  );
+};
 
 export { UserContainer };

@@ -6,12 +6,12 @@ import { TableHeader, Row } from "./components";
 const UsersContainer = ({ status, data, error }) => {
   return (
     <>
-      {status === STATUS.LOADING_STATUS ? (
+      {status === STATUS.LOADING ? (
         <Loading style={{ justifySelf: "center" }} />
       ) : (
         <Table>
           <TableHeader
-            loading={status === STATUS.LOADING_STATUS}
+            loading={status === STATUS.LOADING}
             data={["Nombre", "Correo", "Nombre de usuario", "Ver mas"]}
           />
           <tbody>
