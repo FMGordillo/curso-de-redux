@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Eye = styled.div`
   color: #000;
-  position: absolute;
   margin-left: 3px;
   margin-top: 3px;
   width: 12px;
@@ -26,7 +25,6 @@ export const Eye = styled.div`
 
   &:hover {
     color: #000;
-    position: absolute;
     margin-left: 3px;
     margin-top: 3px;
     width: 12px;

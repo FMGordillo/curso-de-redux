@@ -1,5 +1,5 @@
 import { Menu } from "../components/Menu";
-import { Main } from "./styles";
+import { Container, Main } from "./styles";
 
 import { Route, BrowserRouter } from "react-router-dom";
 import { IndexPage } from "../pages";
@@ -13,20 +13,24 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Menu />
-        <Main>
-          <Route exact path="/" component={IndexPage} />
-          <Route exact path="/users" component={UsersPage} />
-          <Route path="/user/:id" component={UserPage} />
-        </Main>
-        <footer>
-          <p>
-            Loading icon from{" "}
-            <a href="https://loading.io" rel="noreferrer noopener">
-              loading.io
-            </a>
-          </p>
-        </footer>
+        <Container>
+          <header>
+            <Menu />
+          </header>
+          <Main>
+            <Route exact path="/" component={IndexPage} />
+            <Route exact path="/users" component={UsersPage} />
+            <Route path="/user/:id" component={UserPage} />
+          </Main>
+          <footer>
+            <p>
+              Loading icon from{" "}
+              <a href="https://loading.io" rel="noreferrer noopener">
+                loading.io
+              </a>
+            </p>
+          </footer>
+        </Container>
       </BrowserRouter>
     </Provider>
   );
