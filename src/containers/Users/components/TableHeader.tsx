@@ -1,16 +1,23 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
+import { Loading } from "../../../components";
 
 const THead = styled.thead`
   text-align: left;
 `;
 
-const TableHeader = ({ data, loading }) => {
+type TableHeaderProps = {
+  data: string[];
+  loading: boolean;
+};
+
+const TableHeader: FunctionComponent<TableHeaderProps> = ({ data, loading }) => {
   return loading ? (
-    <div>Hola</div>
+    <Loading />
   ) : (
     <THead>
       <tr>
-        {data.map((h) => (
+        {data.map((h: string) => (
           <th key={h}>{h}</th>
         ))}
       </tr>
