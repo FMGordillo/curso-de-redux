@@ -1,19 +1,21 @@
-import { Menu } from "../components/Menu";
+import { ErrorBoundary, Menu } from "../components";
 import { MainContainer, Main } from "./styles";
 
 import { Route, BrowserRouter } from "react-router-dom";
 
 import store from "./store";
 import { Provider } from "react-redux";
-import React from "react";
+import { lazy, Suspense } from "react";
 
-const IndexPage = React.lazy(() => import("../pages").then(module => ({
-  default: module.IndexPage
-})));
-const UsersPage = React.lazy(() =>
+const IndexPage = lazy(() =>
+  import("../pages").then((module) => ({
+    default: module.IndexPage,
+  }))
+);
+const UsersPage = lazy(() =>
   import("../pages/users").then((module) => ({ default: module.UsersPage }))
 );
-const UserPage = React.lazy(() =>
+const UserPage = lazy(() =>
   import("../pages/user").then((module) => ({ default: module.UserPage }))
 );
 
@@ -26,11 +28,13 @@ function App() {
             <Menu />
           </header>
           <Main>
-            <React.Suspense fallback={<span>Loading...</span>}>
-              <Route exact path="/" component={IndexPage} />
-              <Route exact path="/users" component={UsersPage} />
-              <Route path="/user/:id" component={UserPage} />
-            </React.Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<span>Loading...</span>}>
+                <Route exact path="/" component={IndexPage} />
+                <Route exact path="/users" component={UsersPage} />
+                <Route path="/user/:id" component={UserPage} />
+              </Suspense>
+            </ErrorBoundary>
           </Main>
           <footer>
             <p>
