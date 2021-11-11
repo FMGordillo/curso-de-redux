@@ -1,7 +1,7 @@
 import { ErrorBoundary, Menu } from "../components";
 import { MainContainer, Main } from "./styles";
 
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import store from "./store";
 import { Provider } from "react-redux";
@@ -30,9 +30,11 @@ function App() {
           <Main>
             <ErrorBoundary>
               <Suspense fallback={<span>Loading...</span>}>
-                <Route exact path="/" component={IndexPage} />
-                <Route exact path="/users" component={UsersPage} />
-                <Route path="/user/:id" component={UserPage} />
+                <Routes>
+                  <Route path="/" element={<IndexPage />} />
+                  <Route path="/users" element={<UsersPage />} />
+                  <Route path="/user/:id" element={<UserPage />} />
+                </Routes>
               </Suspense>
             </ErrorBoundary>
           </Main>

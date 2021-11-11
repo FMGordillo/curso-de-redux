@@ -6,7 +6,7 @@ import { fetchPosts, fetchUser } from "../App/actions";
 import { UserContainer } from "../containers";
 
 const UserPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<"id">();
 
   const dispatch = useDispatch();
   const {
