@@ -1,5 +1,13 @@
-html, body {
+html {
+  font-family: sans-serif;
+}
+
+html, body, #root {
   width: 100%;
   height: 100%;
-  font-family: sans-serif;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: 120px auto 120px;
 }

@@ -1,25 +1,13 @@
-import styled from "styled-components";
-
-export const MainContainer = styled.div`
-  header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-  }
-  footer {
-    position: fixed;
-    width: 100%;
-    text-align: center;
-    bottom: 0;
-    padding: 24px;
-    background: hsl(45deg, 30%, 75%);
-  }
-`;
+import styled from 'styled-components'
 
 export const Main = styled.main`
   display: grid;
-  padding-top: 64px;
-  padding-bottom: 64px;
-  align-content: center;
+  padding: 32px 128px;
   overflow: auto;
-`;
+`
+
+export const Footer = styled.footer`
+  font-size: 0.75rem;
+  align-self: center;
+  justify-self: center;
+`

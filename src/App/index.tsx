@@ -1,55 +1,50 @@
-import { ErrorBoundary, Menu } from "../components";
-import { MainContainer, Main } from "./styles";
+import { ErrorBoundary } from 'components'
+import Menu from 'components/Menu'
+import { Footer, Main } from './styles'
 
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
 
-import store from "./store";
-import { Provider } from "react-redux";
-import { lazy, Suspense } from "react";
+import store from './store'
+import { Provider } from 'react-redux'
+import { FunctionComponent, lazy, Suspense } from 'react'
+import Loading from 'components/Loading'
 
-const IndexPage = lazy(() =>
-  import("../pages").then((module) => ({
-    default: module.IndexPage,
-  }))
-);
-const UsersPage = lazy(() =>
-  import("../pages/users").then((module) => ({ default: module.UsersPage }))
-);
-const UserPage = lazy(() =>
-  import("../pages/user").then((module) => ({ default: module.UserPage }))
-);
+const IndexPage = lazy(async () =>
+  await import('../pages').then((module) => module))
+const UsersPage = lazy(async () =>
+  await import('../pages/users').then((module) => module)
+)
+const UserPage = lazy(async () =>
+  await import('../pages/user').then((module) => module)
+)
 
-function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <MainContainer>
-          <header>
-            <Menu />
-          </header>
-          <Main>
-            <ErrorBoundary>
-              <Suspense fallback={<span>Loading...</span>}>
-                <Routes>
-                  <Route path="/" element={<IndexPage />} />
-                  <Route path="/users" element={<UsersPage />} />
-                  <Route path="/user/:id" element={<UserPage />} />
-                </Routes>
-              </Suspense>
-            </ErrorBoundary>
-          </Main>
-          <footer>
-            <p>
-              Loading icon from{" "}
-              <a href="https://loading.io" rel="noreferrer noopener">
-                loading.io
-              </a>
-            </p>
-          </footer>
-        </MainContainer>
-      </BrowserRouter>
-    </Provider>
-  );
-}
+const App: FunctionComponent = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <header>
+        <Menu />
+      </header>
+      <Main>
+        <ErrorBoundary>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path='/' element={<IndexPage />} />
+              <Route path='/users' element={<UsersPage />} />
+              <Route path='/user/:id' element={<UserPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+      </Main>
+      <Footer>
+        <p>
+          Loading icon from{' '}
+          <a href='https://loading.io' rel='noreferrer noopener'>
+            loading.io
+          </a>
+        </p>
+      </Footer>
+    </BrowserRouter>
+  </Provider>
+)
 
-export { App };
+export { App }

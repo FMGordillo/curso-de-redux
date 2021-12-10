@@ -1,23 +1,24 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { FunctionComponent, useEffect } from 'react'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
-import { UsersContainer } from "../containers/Users";
-import { fetchUsers } from "../App/actions";
+import UsersContainer from 'containers/Users'
+import { fetchUsers } from '../App/actions'
+import { RootState } from 'App/store'
+import { UserState } from 'App/reducers/userReducer'
 
-const UsersPage = () => {
-  const { data, status, error } = useSelector(
-    // @ts-ignore
+const UsersPage: FunctionComponent = () => {
+  const { data, status, error } = useSelector<RootState, UserState>(
     ({ users }) => users,
     shallowEqual
-  );
+  )
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+    dispatch(fetchUsers())
+  }, [dispatch])
 
-  return <UsersContainer status={status} error={error} data={data} />;
-};
+  return <UsersContainer status={status} error={error} data={data} />
+}
 
-export { UsersPage };
+export default UsersPage

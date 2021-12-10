@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Eye = styled.div`
   color: #000;
@@ -47,4 +47,4 @@ export const Eye = styled.div`
       background-color: currentColor;
     }
   }
-`;
+`

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Article = styled.article`
   padding: 14px;  
@@ -9,7 +9,7 @@ const Article = styled.article`
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
-`;
+`
 
 const Post = ({ data }) => {
   return (
@@ -17,7 +17,7 @@ const Post = ({ data }) => {
       <h2>{data.title}</h2>
       <p>{data.body}</p>
     </Article>
-  );
-};
+  )
+}
 
-export { Post };
+export { Post }

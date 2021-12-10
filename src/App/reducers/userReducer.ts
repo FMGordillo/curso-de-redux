@@ -1,31 +1,38 @@
-import * as status from "../actions/status";
-import { USER_ACTIONS } from "../actions";
+import { Status } from 'App/types'
+import { USER_ACTIONS } from '../actions'
 
-export const userReducerInitialState = {
+export interface UserState {
+  data: unknown[]
+  selectedUser: unknown
+  status: Status
+  error: boolean
+}
+
+export const userReducerInitialState: UserState = {
   data: [],
   selectedUser: {},
-  status: status.IDLE,
-  error: false,
-};
+  status: Status.IDLE,
+  error: false
+}
 
-const reducer = (state = userReducerInitialState, action) => {
+const reducer = (state = userReducerInitialState, action): UserState => {
   switch (action.type) {
     case USER_ACTIONS.FETCH_USER_REQUEST:
-      return { ...state, status: status.LOADING };
+      return { ...state, status: Status.LOADING }
     case USER_ACTIONS.FETCH_USER_SUCCESS:
-      return { ...state, selectedUser: action.payload, status: status.SUCCESS };
+      return { ...state, selectedUser: action.payload, status: Status.SUCCESS }
     case USER_ACTIONS.FETCH_USER_FAILURE:
-      return { ...state, status: status.FAILURE, error: true };
-    
-    case USER_ACTIONS.FETCH_USERS_REQUEST:
-      return { ...state, status: status.LOADING };
-    case USER_ACTIONS.FETCH_USERS_SUCCESS:
-      return { ...state, data: action.payload, status: status.SUCCESS };
-    case USER_ACTIONS.FETCH_USERS_FAILURE:
-      return { ...state, status: status.FAILURE, error: true };
-    default:
-      return state;
-  }
-};
+      return { ...state, status: Status.FAILURE, error: true }
 
-export default reducer;
+    case USER_ACTIONS.FETCH_USERS_REQUEST:
+      return { ...state, status: Status.LOADING }
+    case USER_ACTIONS.FETCH_USERS_SUCCESS:
+      return { ...state, data: action.payload, status: Status.SUCCESS }
+    case USER_ACTIONS.FETCH_USERS_FAILURE:
+      return { ...state, status: Status.FAILURE, error: true }
+    default:
+      return state
+  }
+}
+
+export default reducer

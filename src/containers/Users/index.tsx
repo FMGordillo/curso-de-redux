@@ -1,28 +1,37 @@
-import * as STATUS from "../../App/actions/status";
-import { Loading } from "../../components";
-import { Table } from "./styles";
-import { TableHeader, Row } from "./components";
+import { Status } from 'App/types'
+import Loading from 'components/Loading'
+import type { FunctionComponent } from 'react'
+import { Row, TableHeader } from './components'
+import { Table } from './styles'
 
-const UsersContainer = ({ status, data, error }) => {
+interface UsersContainerProps {
+  status: Status
+  data: unknown[] // TODO: Improve this
+  error: boolean
+}
+
+const UsersContainer: FunctionComponent<UsersContainerProps> = ({ status, data, error }) => {
   return (
     <>
-      {status === STATUS.LOADING ? (
-        <Loading style={{ justifySelf: "center" }} />
-      ) : (
-        <Table>
-          <TableHeader
-            loading={status === STATUS.LOADING}
-            data={["Nombre", "Correo", "Nombre de usuario", "Ver mas"]}
-          />
-          <tbody>
-            {(data?.length && !error ? data : []).map((d) => (
-              <Row key={d.id} data={d} />
-            ))}
-          </tbody>
-        </Table>
-      )}
+      {status === Status.LOADING
+        ? (
+          <Loading style={{ justifySelf: 'center' }} />
+          )
+        : (
+          <Table>
+            <TableHeader
+              loading={false}
+              data={['Nombre', 'Correo', 'Nombre de usuario', 'Ver mas']}
+            />
+            <tbody>
+              {(data?.length === 0 && !error ? data : []).map((d) => (
+                <Row key={d.id} data={d} />
+              ))}
+            </tbody>
+          </Table>
+          )}
     </>
-  );
-};
+  )
+}
 
-export { UsersContainer };
+export default UsersContainer

@@ -1,5 +1,10 @@
-const IndexPage = () => {
-  return <div>My Page</div>;
-};
+import IndexContainer from 'containers/Main'
+import { FunctionComponent } from 'react'
 
-export { IndexPage };
+const IndexPage: FunctionComponent = () => {
+  return (
+    <IndexContainer />
+  )
+}
+
+export default IndexPage
