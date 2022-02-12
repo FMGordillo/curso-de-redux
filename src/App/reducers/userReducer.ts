@@ -16,7 +16,7 @@ const reducer = (state = userReducerInitialState, action) => {
       return { ...state, selectedUser: action.payload, status: status.SUCCESS };
     case USER_ACTIONS.FETCH_USER_FAILURE:
       return { ...state, status: status.FAILURE, error: true };
-    
+
     case USER_ACTIONS.FETCH_USERS_REQUEST:
       return { ...state, status: status.LOADING };
     case USER_ACTIONS.FETCH_USERS_SUCCESS:

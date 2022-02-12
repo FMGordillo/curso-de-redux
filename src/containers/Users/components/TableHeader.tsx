@@ -11,7 +11,10 @@ type TableHeaderProps = {
   loading: boolean;
 };
 
-const TableHeader: FunctionComponent<TableHeaderProps> = ({ data, loading }) => {
+const TableHeader: FunctionComponent<TableHeaderProps> = ({
+  data,
+  loading,
+}) => {
   return loading ? (
     <Loading />
   ) : (

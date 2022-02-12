@@ -13,7 +13,7 @@ const store = configureStore({
   reducer: reducers,
   middleware: [reduxThunk],
   preloadedState: initialState,
-  devTools: true
+  devTools: true,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

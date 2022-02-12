@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Article = styled.article`
-  padding: 14px;  
+  padding: 14px;
   margin: 14px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   border: 1px solid #ccc;
