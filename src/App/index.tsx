@@ -1,11 +1,9 @@
-import { ErrorBoundary, Menu } from "../components";
-import { MainContainer, Main } from "./styles";
-
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-
-import store from "./store";
-import { Provider } from "react-redux";
 import { lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ErrorBoundary, Menu } from "../components";
+import store from "./store";
+import classes from "./styles.module.css";
 
 const IndexPage = lazy(() =>
   import("../pages").then((module) => ({
@@ -23,11 +21,11 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <MainContainer>
+        <div className={classes.container}>
           <header>
             <Menu />
           </header>
-          <Main>
+          <main className={classes.main}>
             <ErrorBoundary>
               <Suspense fallback={<span>Loading...</span>}>
                 <Routes>
@@ -37,7 +35,7 @@ function App() {
                 </Routes>
               </Suspense>
             </ErrorBoundary>
-          </Main>
+          </main>
           <footer>
             <p>
               Loading icon from{" "}
@@ -46,7 +44,7 @@ function App() {
               </a>
             </p>
           </footer>
-        </MainContainer>
+        </div>
       </BrowserRouter>
     </Provider>
   );

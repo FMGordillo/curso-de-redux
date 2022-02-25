@@ -1,10 +1,6 @@
 import { FunctionComponent } from "react";
-import styled from "styled-components";
 import { Loading } from "../../../components";
-
-const THead = styled.thead`
-  text-align: left;
-`;
+import classes from "./styles.module.css";
 
 type TableHeaderProps = {
   data: string[];
@@ -18,13 +14,13 @@ const TableHeader: FunctionComponent<TableHeaderProps> = ({
   return loading ? (
     <Loading />
   ) : (
-    <THead>
+    <thead className={classes.thead}>
       <tr>
         {data.map((h: string) => (
           <th key={h}>{h}</th>
         ))}
       </tr>
-    </THead>
+    </thead>
   );
 };
 

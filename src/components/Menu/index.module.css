@@ -1,0 +1,29 @@
+.nav {
+  background: hsl(40deg, 40%, 50%);
+}
+.nav ul {
+  display: flex;
+  align-items: left;
+  list-style: none;
+}
+
+.link {
+  color: hsl(40deg, 50%, 10%);
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.link:hover {
+  color: hsl(40deg, 40%, 80%);
+}
+
+.list-item {
+  padding: 14px;
+}
+.list-item--active {
+  background-color: hsl(40deg, 60%, 60%);
+  border-bottom: 1px solid hsl(40deg, 80%, 70%);
+}
+.list-item--inactive {
+  background-color: none;
+  border-bottom: none;
+}

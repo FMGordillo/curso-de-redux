@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import * as STATUS from "../App/actions/status";
 import { fetchPosts, fetchUser } from "../App/actions";
-import { UserContainer } from "../containers";
+import { UserContainer } from "../screens";
 
 const UserPage = () => {
   const { id } = useParams<"id">();

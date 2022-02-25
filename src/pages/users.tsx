@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
-import { UsersContainer } from "../containers/Users";
+import { UsersContainer } from "../screens/Users";
 import { fetchUsers } from "../App/actions";
 
 const UsersPage = () => {

@@ -1,6 +1,5 @@
 import * as STATUS from "../../App/actions/status";
 import { Loading } from "../../components";
-import { Table } from "./styles";
 import { TableHeader, Row } from "./components";
 
 const UsersContainer = ({ status, data, error }) => {
@@ -9,7 +8,7 @@ const UsersContainer = ({ status, data, error }) => {
       {status === STATUS.LOADING ? (
         <Loading style={{ justifySelf: "center" }} />
       ) : (
-        <Table>
+        <table>
           <TableHeader
             loading={status === STATUS.LOADING}
             data={["Nombre", "Correo", "Nombre de usuario", "Ver mas"]}
@@ -19,7 +18,7 @@ const UsersContainer = ({ status, data, error }) => {
               <Row key={d.id} data={d} />
             ))}
           </tbody>
-        </Table>
+        </table>
       )}
     </>
   );
