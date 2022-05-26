@@ -1,21 +1,18 @@
-.container header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-}
 .container footer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   position: fixed;
   width: 100%;
   text-align: center;
   bottom: 0;
-  padding: 24px;
+  padding: 12px;
   background: hsl(45deg, 30%, 75%);
 }
 
 .main {
   display: grid;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding: 32px 64px;
   align-content: center;
   overflow: auto;
 }

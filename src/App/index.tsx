@@ -22,9 +22,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className={classes.container}>
-          <header>
-            <Menu />
-          </header>
+          <Menu />
           <main className={classes.main}>
             <ErrorBoundary>
               <Suspense fallback={<span>Loading...</span>}>

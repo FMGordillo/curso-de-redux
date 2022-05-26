@@ -1,38 +1,38 @@
 import classes from "./index.module.css";
-import { useLocation, Link } from "react-router-dom";
-import { useCallback } from "react";
+import { NavLink } from "react-router-dom";
 
 const Menu = () => {
-  const location = useLocation();
-
-  const activeLink = useCallback(
-    (route) => location.pathname === route,
-    [location.pathname]
-  );
-
   return (
-    <nav className={classes.nav}>
-      <ul>
-        <Link className={classes.link} to="/">
-          <li
-            className={`list-item list-item${
-              activeLink("/") ? "--active" : "--inactive"
-            }`}
-          >
-            Index
+    <header className={classes.container}>
+      <nav>
+        <ul className={classes.content}>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `${classes.listItem} ${
+                  isActive ? classes.listItemActive : classes.listItemInactive
+                }`
+              }
+              to="/"
+            >
+              Index
+            </NavLink>
           </li>
-        </Link>
-        <Link className={classes.link} to="/users">
-          <li
-            className={`list-item list-item${
-              activeLink("/users") ? "--active" : "--inactive"
-            }`}
-          >
-            Users
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `${classes.listItem} ${
+                  isActive ? classes.listItemActive : classes.listItemInactive
+                }`
+              }
+              to="/users"
+            >
+              Users
+            </NavLink>
           </li>
-        </Link>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

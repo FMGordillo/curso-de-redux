@@ -1,29 +1,28 @@
-.nav {
+.container {
+  padding: 8px 16px;
   background: hsl(40deg, 40%, 50%);
 }
-.nav ul {
+
+.content {
   display: flex;
-  align-items: left;
+  justify-content: center;
+  gap: 1em;
   list-style: none;
 }
 
-.link {
+.listItem {
   color: hsl(40deg, 50%, 10%);
   text-decoration: none;
   transition: all 0.4s;
+  padding-bottom: 2px;
 }
-.link:hover {
+.listItem:hover {
   color: hsl(40deg, 40%, 80%);
 }
-
-.list-item {
-  padding: 14px;
-}
-.list-item--active {
-  background-color: hsl(40deg, 60%, 60%);
+.listItemActive {
   border-bottom: 1px solid hsl(40deg, 80%, 70%);
 }
-.list-item--inactive {
+.listItemInactive {
   background-color: none;
   border-bottom: none;
 }
