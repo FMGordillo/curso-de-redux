@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
-import { userReducerInitialState } from "./reducers/userReducer";
-import { postReducerInitialState } from "./reducers/postReducer";
+import { initialState as usersInitialState } from "./userReducer";
+import { initialState as postsInitialState } from "./postReducer";
 
 const initialState = {
-  users: userReducerInitialState,
-  posts: postReducerInitialState,
+  users: usersInitialState,
+  posts: postsInitialState,
 };
 
 const store = configureStore({

@@ -20,6 +20,7 @@ class ErrorBoundary extends Component<unknown, { hasError: boolean }> {
       return <h1>Something went wrong.</h1>;
     }
 
+    // @ts-ignore
     return this.props.children;
   }
 }
