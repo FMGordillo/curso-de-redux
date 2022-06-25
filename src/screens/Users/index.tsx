@@ -1,4 +1,4 @@
-import * as STATUS from "../../App/actions/status";
+import * as STATUS from "../../status";
 import { Loading } from "../../components";
 import { TableHeader, Row } from "./components";
 

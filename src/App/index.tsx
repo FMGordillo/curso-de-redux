@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ErrorBoundary, Menu } from "../components";
-import store from "./store";
+import store from "../redux/store";
 import classes from "./styles.module.css";
 
 const IndexPage = lazy(() =>
