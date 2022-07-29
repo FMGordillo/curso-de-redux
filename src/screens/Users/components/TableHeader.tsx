@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Loading } from "../../../components";
+import { Icons } from "../../../components";
 import classes from "./styles.module.css";
 
 type TableHeaderProps = {
@@ -12,7 +12,7 @@ const TableHeader: FunctionComponent<TableHeaderProps> = ({
   loading,
 }) => {
   return loading ? (
-    <Loading />
+    <Icons.Loading />
   ) : (
     <thead className={classes.thead}>
       <tr>
