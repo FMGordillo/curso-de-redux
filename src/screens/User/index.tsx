@@ -1,9 +1,9 @@
 import { Post } from "./components";
-import { Title, Loading } from "../../components";
+import { Icons, Title } from "../../components";
 
-const UserContainer = ({ data, posts, loading, error }) => {
+const UserContainer = ({ posts, loading }) => {
   return loading ? (
-    <Loading />
+    <Icons.Loading style={{ justifySelf: "center" }} />
   ) : (
     <div>
       <Title>Articles posted by user</Title>

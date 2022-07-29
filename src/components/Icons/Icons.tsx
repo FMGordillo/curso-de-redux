@@ -1,5 +1,5 @@
 import { CSSProperties, FC } from "react";
-import icons from "./icons.module.css";
+import icons from "./Icons.module.css";
 
 type IconProps = {
   style?: CSSProperties;

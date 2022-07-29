@@ -1,0 +1,17 @@
+.listItem {
+  color: hsl(40deg, 50%, 10%);
+  text-decoration: none;
+  transition: all 0.4s;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+.listItem:hover {
+  color: hsl(40deg, 40%, 80%);
+}
+.listItemActive {
+  border-bottom: 1px solid hsl(40deg, 80%, 70%);
+}
+.listItemInactive {
+  background-color: none;
+  border-bottom: none;
+}

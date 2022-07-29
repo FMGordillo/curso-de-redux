@@ -1,32 +1,18 @@
+import Link from "next/link";
+import ActiveLink from "../ActiveLink/ActiveLink";
 import classes from "./index.module.css";
-import { NavLink } from "react-router-dom";
 
 const Menu = () => {
-  const calculateClassName = (isActive: boolean) =>
-    `${classes.listItem} ${
-      isActive ? classes.listItemActive : classes.listItemInactive
-    }`;
-
   return (
     <header className={classes.container}>
       <nav>
         <ul className={classes.content}>
-          <li>
-            <NavLink
-              className={({ isActive }) => calculateClassName(isActive)}
-              to="/"
-            >
-              Index
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => calculateClassName(isActive)}
-              to="/users"
-            >
-              Users
-            </NavLink>
-          </li>
+          <ActiveLink href="/">
+            <li>Index</li>
+          </ActiveLink>
+          <ActiveLink href="/users">
+            <li>Users</li>
+          </ActiveLink>
         </ul>
       </nav>
     </header>

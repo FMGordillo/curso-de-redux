@@ -1,12 +1,12 @@
+import { Icons } from "../../components";
 import * as STATUS from "../../status";
-import { Loading } from "../../components";
-import { TableHeader, Row } from "./components";
+import { Row, TableHeader } from "./components";
 
 const UsersContainer = ({ status, data, error }) => {
   return (
     <>
       {status === STATUS.LOADING ? (
-        <Loading style={{ justifySelf: "center" }} />
+        <Icons.Loading style={{ justifySelf: "center" }} />
       ) : (
         <table>
           <TableHeader

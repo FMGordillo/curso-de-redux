@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { Eye } from "../../../components";
+import Link from "next/link";
+import { Icons } from "../../../components";
 
 const Row = ({ data }) => (
   <tr>
@@ -7,8 +7,10 @@ const Row = ({ data }) => (
     <td>{data.email}</td>
     <td>{data.username}</td>
     <td>
-      <Link to={`/user/${data.id}`}>
-        <Eye />
+      <Link passHref href={`/user/${data.id}`}>
+        <a>
+          <Icons.Eye />
+        </a>
       </Link>
     </td>
   </tr>
