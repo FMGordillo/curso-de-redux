@@ -21,4 +21,4 @@ const UsersPage = () => {
   return <UsersContainer status={status} error={error} data={data} />;
 };
 
-export { UsersPage };
+export default UsersPage;

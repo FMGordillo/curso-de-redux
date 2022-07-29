@@ -7,4 +7,4 @@ const IndexPage = () => {
   );
 };
 
-export { IndexPage };
+export default IndexPage;

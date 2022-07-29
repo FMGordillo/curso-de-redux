@@ -1,14 +1,14 @@
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
-import { useAppSelector } from "../redux/hooks";
-import { fetchPosts } from "../redux/postReducer";
-import { fetchUser } from "../redux/userReducer";
-import { UserContainer } from "../screens";
-import * as STATUS from "../status";
+import { useAppSelector } from "../../redux/hooks";
+import { fetchPosts } from "../../redux/postReducer";
+import { fetchUser } from "../../redux/userReducer";
+import { UserContainer } from "../../screens";
+import * as STATUS from "../../status";
 
 const UserPage = () => {
-  const { id } = useParams<"id">();
+  const { query } = useRouter();
 
   const dispatch = useDispatch();
   const {
@@ -25,14 +25,15 @@ const UserPage = () => {
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(fetchUser(id));
+    dispatch(fetchUser(query.id));
     // @ts-ignore
-    dispatch(fetchPosts(id));
-  }, [dispatch, id]);
+    dispatch(fetchPosts(query.id));
+  }, [dispatch, query.id]);
 
   return (
     <UserContainer
       posts={posts}
+      // @ts-ignore
       data={selectedUser}
       loading={isLoading}
       error={error}
@@ -40,4 +41,4 @@ const UserPage = () => {
   );
 };
 
-export { UserPage };
+export default UserPage;
