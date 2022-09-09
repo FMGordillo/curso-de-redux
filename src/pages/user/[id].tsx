@@ -1,23 +1,19 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../redux/hooks";
-import { fetchPosts } from "../../redux/postReducer";
-import { fetchUser } from "../../redux/userReducer";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchPosts } from "../../redux/reducers/postReducer";
+import { fetchUser } from "../../redux/reducers/userReducer";
 import { UserContainer } from "../../screens";
 import * as STATUS from "../../status";
 
 const UserPage = () => {
   const { query } = useRouter();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
-    selectedUser,
     status: userStatus,
     error,
-    // @ts-ignore
   } = useAppSelector((state) => state.users);
-  // @ts-ignore
   const { posts, status: postStatus } = useAppSelector((state) => state.posts);
 
   const isLoading =
@@ -33,8 +29,6 @@ const UserPage = () => {
   return (
     <UserContainer
       posts={posts}
-      // @ts-ignore
-      data={selectedUser}
       loading={isLoading}
       error={error}
     />

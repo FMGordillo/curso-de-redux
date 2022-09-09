@@ -1,4 +1,4 @@
-import * as STATUS from "../status";
+import * as STATUS from "../../status";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
@@ -11,7 +11,7 @@ const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    fetchPostRequested(state, _action) {
+    fetchPostRequested(state) {
       return { ...state, status: STATUS.LOADING };
     },
     fetchPostSuccess(state, action) {
@@ -22,7 +22,8 @@ const postSlice = createSlice({
         error: null,
       };
     },
-    fetchPostFailed(state, _action) {
+    fetchPostFailed(state, action) {
+      console.error(action.payload);
       return { ...state, posts: [], status: STATUS.FAILURE, error: true };
     },
   },
@@ -32,7 +33,6 @@ export const { fetchPostFailed, fetchPostRequested, fetchPostSuccess } =
   postSlice.actions;
 
 export const fetchPosts = (userId) => async (dispatch) => {
-  // @ts-ignore
   dispatch(fetchPostRequested());
   try {
     const data = await fetch(
