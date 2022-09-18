@@ -1,49 +1,16 @@
-import * as STATUS from "../../status";
-import { createSlice } from "@reduxjs/toolkit";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const initialState = {
-  posts: [],
-  status: STATUS.IDLE,
-  error: false,
-};
-
-const postSlice = createSlice({
-  name: "posts",
-  initialState,
-  reducers: {
-    fetchPostRequested(state) {
-      return { ...state, status: STATUS.LOADING };
-    },
-    fetchPostSuccess(state, action) {
-      return {
-        ...state,
-        posts: action.payload,
-        status: STATUS.SUCCESS,
-        error: null,
-      };
-    },
-    fetchPostFailed(state, action) {
-      console.error(action.payload);
-      return { ...state, posts: [], status: STATUS.FAILURE, error: true };
-    },
-  },
+const postsApi = createApi({
+  reducerPath: "/posts",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jsonplaceholder.typicode.com",
+  }),
+  endpoints: (builder) => ({
+    getPosts: builder.query<any, string>({
+      query: (userId) => `posts?userId=${userId}`,
+    }),
+  }),
 });
 
-export const { fetchPostFailed, fetchPostRequested, fetchPostSuccess } =
-  postSlice.actions;
-
-export const fetchPosts = (userId) => async (dispatch) => {
-  dispatch(fetchPostRequested());
-  try {
-    const data = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
-    );
-    const posts = await data.json();
-    dispatch(fetchPostSuccess(posts));
-  } catch (error) {
-    console.info("Error while fetching posts", error);
-    dispatch(fetchPostFailed(error));
-  }
-};
-
-export default postSlice.reducer;
+export const { useGetPostsQuery, useLazyGetPostsQuery } = postsApi;
+export default postsApi;

@@ -2,15 +2,15 @@ import { Icons } from "../../components";
 import * as STATUS from "../../status";
 import { Row, TableHeader } from "./components";
 
-const UsersContainer = ({ status, data, error }) => {
+const UsersContainer = ({ loading, data, error }) => {
   return (
     <>
-      {status === STATUS.LOADING ? (
+      {loading ? (
         <Icons.Loading style={{ justifySelf: "center" }} />
       ) : (
         <table>
           <TableHeader
-            loading={status === STATUS.LOADING}
+            loading={loading}
             data={["Nombre", "Correo", "Nombre de usuario", "Ver mas"]}
           />
           <tbody>
