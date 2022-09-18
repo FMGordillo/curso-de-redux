@@ -1,20 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reduxThunk from "redux-thunk";
-import reducers from "./reducers";
-import { initialState as usersInitialState } from "./reducers/userReducer";
-import { initialState as postsInitialState } from "./reducers/postReducer";
-
-const initialState = {
-  users: usersInitialState,
-  posts: postsInitialState,
-};
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { userReducer, postReducer } from "./reducers";
 
 const store = configureStore({
-  reducer: reducers,
-  middleware: [reduxThunk],
-  preloadedState: initialState,
+  reducer: {
+    [userReducer.default.reducerPath]: userReducer.default.reducer,
+    [postReducer.default.reducerPath]: postReducer.default.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([
+      userReducer.default.middleware,
+      postReducer.default.middleware,
+    ]),
   devTools: true,
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
