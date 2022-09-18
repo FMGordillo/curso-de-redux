@@ -1,5 +1,4 @@
 import { Icons } from "../../components";
-import * as STATUS from "../../status";
 import { Row, TableHeader } from "./components";
 
 const UsersContainer = ({ loading, data, error }) => {
