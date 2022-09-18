@@ -1,5 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import * as status from "../status";
+import { AnyAction, createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
+import * as status from "../../status";
+
+type UserState = {
+  data: any[];
+  selectedUser: any;
+  status: string;
+  error: boolean;
+}
 
 export const initialState = {
   data: [],
@@ -56,7 +63,7 @@ export const fetchUser = (id) => async (dispatch) => {
       throw new Error("No user was found");
     }
 
-    dispatch(fetchUserSuccess(data));
+    dispatch(usersSlice.actions.fetchUserSuccess(data));
   } catch (error) {
     console.info("Error while fetching user", error);
     dispatch(fetchUserFailed(error));
@@ -89,4 +96,4 @@ export const {
   fetchUsersSuccess,
 } = usersSlice.actions;
 
-export default usersSlice.reducer;
+export default usersSlice.reducer as Reducer<UserState>;

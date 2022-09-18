@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../redux/userReducer";
+import { shallowEqual } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchUsers } from "../redux/reducers/userReducer";
 
 import { UsersContainer } from "../screens/Users";
 
 const UsersPage = () => {
-  const { data, status, error } = useSelector(
-    // @ts-ignore
+  const { data, status, error } = useAppSelector(
     ({ users }) => users,
     shallowEqual
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // @ts-ignore

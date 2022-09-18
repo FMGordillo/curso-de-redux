@@ -1,7 +1,11 @@
 import { Post } from "./components";
 import { Icons, Title } from "../../components";
 
-const UserContainer = ({ posts, loading }) => {
+const UserContainer = ({ error, posts, loading }) => {
+  if (error) {
+    return null;
+  }
+
   return loading ? (
     <Icons.Loading style={{ justifySelf: "center" }} />
   ) : (
